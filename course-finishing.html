@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Отделочные работы и ремонт - PROFстрой</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Палитра и базовые стили (совместимы с главной страницей PROFстрой) */
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --muted-color: #757575;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        *{box-sizing:border-box}
+        body{
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin:0;
+            background:var(--background-color);
+            color:var(--text-color);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        /* Хедер — как на сайте PROFстрой */
+        .header{ background:var(--secondary-color); }
+        .nav-container{ max-width:1100px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between; }
+        .logo{ font-weight:800; color:var(--accent-color); font-size:1.15rem; }
+        .nav-menu{ list-style:none; margin:0; padding:0; display:flex; gap:1rem; align-items:center; }
+        .nav-menu a{ color:#fff; text-decoration:none; padding:0.45rem 0.6rem; display:inline-block; }
+        .nav-menu a.active{ color:var(--accent-color); border-bottom:2px solid var(--primary-color); padding-bottom:0.25rem; }
+
+        .container{ max-width:1100px; margin:0 auto; padding:2rem; }
+
+        /* Заголовок курса */
+        .course-header{
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: #fff;
+            padding: 1.75rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.75rem;
+        }
+        .course-header h1{ margin:0; font-size:1.6rem; }
+        .course-meta{ display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; align-items:center; color: rgba(255,255,255,0.95); }
+        .course-price-badge{ background: rgba(255,255,255,0.07); padding:0.45rem 0.8rem; border-radius:8px; font-weight:700; }
+
+        /* Сетка содержимого */
+        .two-column-layout{ display:grid; grid-template-columns: 360px 1fr; gap:1.5rem; align-items:start; }
+        @media (max-width:980px){ .two-column-layout{ grid-template-columns: 1fr; } }
+
+        /* Сайдбар (галерея и ключевые факты) */
+        .course-aside{ background:#fff; border:1px solid var(--border-color); padding:1.2rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); }
+        .gallery { border-radius:8px; overflow:hidden; background:linear-gradient(135deg,#f6f0ea,#fff); display:flex; align-items:center; justify-content:center; height:220px; font-size:3.2rem; margin-bottom:1rem; }
+        .aside-list{ display:flex; flex-direction:column; gap:0.8rem; margin-top:0.5rem; }
+        .aside-item{ display:flex; gap:0.8rem; align-items:center; }
+        .aside-item .ico{ width:44px; height:44px; border-radius:8px; background:var(--accent-color); display:flex; align-items:center; justify-content:center; color:#1f1f1f; font-weight:700; box-shadow:0 6px 14px rgba(0,0,0,0.08); }
+
+        /* Основной контент курса */
+        .article{ background:#fff; border:1px solid var(--border-color); padding:1.25rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); }
+        .article h2{ margin-top:0; color:var(--secondary-color); }
+        .article p{ color:#444; line-height:1.45; }
+
+        .outcomes{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:0.75rem; margin-top:1rem; }
+        .outcome{ background:#f9fafb; border-radius:8px; padding:0.9rem; border:1px solid #eef2f4; }
+
+        /* Блок цены и запись */
+        .price-box{ background:#fffaf0; border-left:4px solid var(--primary-color); padding:1rem; border-radius:8px; margin-top:1.25rem; }
+        .price-box h3{ margin:0 0 0.5rem 0; color:var(--secondary-color); }
+        .price-big{ color:var(--primary-color); font-size:1.4rem; font-weight:800; margin-bottom:0.5rem; }
+
+        /* Кнопки */
+        .btn{ background:var(--primary-color); color:#fff; border:1px solid var(--primary-color); padding:0.6rem 0.95rem; border-radius:8px; text-decoration:none; display:inline-block; cursor:pointer; font-weight:700; }
+        .btn:hover{ background:var(--primary-color-dark); border-color:var(--primary-color-dark); }
+
+        .btn-primary{ animation:pulse 2s infinite; background:var(--primary-color); border-color:var(--primary-color); color:#fff; }
+        @keyframes pulse{ 0%{ transform:scale(1);} 50%{ transform:scale(1.03);} 100%{ transform:scale(1);} }
+
+        /* Доп. блоки */
+        .faq { margin-top:1.5rem; }
+        details{ margin-bottom:0.85rem; padding:0.85rem; border-radius:8px; border:1px solid var(--border-color); background:#fff; }
+        summary{ font-weight:700; cursor:pointer; color:var(--secondary-color); }
+
+        .footer{ background:var(--footer-bg); color:#fff; padding:1.5rem 0; margin-top:2rem; }
+        .footer .container{ display:flex; justify-content:center; }
+    </style>
+</head>
+<body>
+    <!-- Хедер PROFстрой -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html" class="active">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Заголовок курса -->
+            <section class="course-header" aria-labelledby="courseTitle">
+                <h1 id="courseTitle">Отделочные работы и ремонт</h1>
+                <div class="course-meta" role="list">
+                    <div class="course-price-badge" role="listitem">28 000 ₽</div>
+                    <div role="listitem">📚 16 недель</div>
+                    <div role="listitem">⭐ 4.9/5 (189 отзывов)</div>
+                    <div role="listitem">🎯 Уровень: Средний</div>
+                    <div role="listitem">👥 Группы до 12 человек</div>
+                </div>
+            </section>
+
+            <div class="two-column-layout">
+                <!-- Левая колонка: галерея и факты -->
+                <aside class="course-aside" aria-labelledby="asideTitle">
+                    <div class="gallery" aria-hidden="true">🧰</div>
+
+                    <div class="aside-list">
+                        <div class="aside-item">
+                            <div class="ico">⏱</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--secondary-color)">Длительность</div>
+                                <div class="muted">16 недель — 3 учебных дня в неделю</div>
+                            </div>
+                        </div>
+
+                        <div class="aside-item">
+                            <div class="ico">🏗</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--secondary-color)">Практика</div>
+                                <div class="muted">80% времени на реальных объектах</div>
+                            </div>
+                        </div>
+
+                        <div class="aside-item">
+                            <div class="ico">🧾</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--secondary-color)">Сертификат</div>
+                                <div class="muted">По окончании — документ и рекомендации</div>
+                            </div>
+                        </div>
+
+                        <div class="aside-item">
+                            <div class="ico">💼</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--secondary-color)">Трудоустройство</div>
+                                <div class="muted">Помощь с резюме и вакансии от партнёров</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:1rem;">
+                        <a href="#enroll" class="btn" style="width:100%; display:block; text-align:center;">Записаться на курс</a>
+                    </div>
+                </aside>
+
+                <!-- Правая колонка: содержание курса -->
+                <section class="article" aria-labelledby="aboutCourse">
+                    <h2 id="aboutCourse">Что вы изучите</h2>
+                    <p>Курс «Отделочные работы и ремонт» — это практическая программа для тех, кто хочет работать на объекте: от черновых и финишных работ до комплексной отделки квартир и коммерческих помещений. Мы обучаем технологиям, безопасности и работе с современными материалами.</p>
+
+                    <div class="outcomes" aria-label="Результаты обучения">
+                        <div class="outcome">
+                            <strong>Штукатурные работы</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">Подготовка поверхности, набрызг, выравнивание, финишная отделка.</div>
+                        </div>
+                        <div class="outcome">
+                            <strong>Плиточные работы</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">Укладка керамики, затирка, выравнивание полов и стен.</div>
+                        </div>
+                        <div class="outcome">
+                            <strong>Окраска и декоративные покрытия</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">Подбор материалов, нанесение и подготовка поверхностей.</div>
+                        </div>
+                        <div class="outcome">
+                            <strong>Монтаж перегородок и отделочные системы</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">Каркасные перегородки, ГКЛ, шумо/теплоизоляция.</div>
+                        </div>
+                        <div class="outcome">
+                            <strong>Чтение чертежей и смет</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">Работа с рабочей документацией и расчёт материалов.</div>
+                        </div>
+                        <div class="outcome">
+                            <strong>Безопасность на объекте</strong>
+                            <div style="font-size:0.95rem; color:var(--muted-color)">ППР, СИЗ, порядок на площадке и взаимодействие с бригадой.</div>
+                        </div>
+                    </div>
+
+                    <h2 id="targetAudience" style="margin-top:1.25rem;">Кому подойдёт</h2>
+                    <p>Подходит начинающим с базовыми навыками ремонта и специалистам, желающим систематизировать опыт и подготовиться к работе в бригаде или как частный мастер.</p>
+
+                    <div class="price-box" aria-live="polite">
+                        <h3>Стоимость и рассрочка</h3>
+                        <div class="price-big">28 000 ₽</div>
+                        <div>или <strong>4 667 ₽/мес</strong> при рассрочке на 6 месяцев</div>
+                        <div style="margin-top:0.75rem;">
+                            <a id="enroll" href="#" class="btn btn-primary" style="width:100%;">Записаться на курс</a>
+                        </div>
+                        <p style="font-size:0.9rem; color:var(--muted-color); margin-top:0.5rem;">Ближайший старт: <strong>10 февраля 2026</strong></p>
+                    </div>
+
+                    <div class="faq">
+                        <h3>Часто спрашивают</h3>
+
+                        <details>
+                            <summary>Нужен ли опыт для поступления?</summary>
+                            <div style="margin-top:0.75rem;">Опыт приветствуется, но не обязателен — курс включает базовые занятия и интенсивную практику.</div>
+                        </details>
+
+                        <details>
+                            <summary>Можно ли оплатить частями?</summary>
+                            <div style="margin-top:0.75rem;">Да — есть беспроцентная рассрочка и варианты банковских рассрочек.</div>
+                        </details>
+
+                        <details>
+                            <summary>Как проходит практика?</summary>
+                            <div style="margin-top:0.75rem;">Практика проходит на стендах и реальных объектах под руководством опытных бригадиров.</div>
+                        </details>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin:0">&copy; 2025 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

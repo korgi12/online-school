@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Тренды строительства в 2024 году - Блог PROFстрой</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Цвета и базовые стили — та же палитра, что и у PROFстрой */
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --muted-color: #757575;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background:var(--background-color);
+            color:var(--text-color);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.45;
+        }
+
+        .container{ max-width:1100px; margin:0 auto; padding:2rem; }
+
+        /* Хедер PROFстрой (идентичен главной) */
+        .header{ background:var(--secondary-color); }
+        .nav-container{ max-width:1100px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between; }
+        .logo{ font-weight:800; color:var(--accent-color); font-size:1.15rem; }
+        .nav-menu{ list-style:none; margin:0; padding:0; display:flex; gap:1rem; align-items:center; }
+        .nav-menu a{ color:#fff; text-decoration:none; padding:0.45rem 0.6rem; display:inline-block; }
+        .nav-menu a.active{ color:var(--accent-color); border-bottom:2px solid var(--primary-color); padding-bottom:0.25rem; }
+
+        /* Большой заголовок статьи (герой-блок) */
+        .hero-article{
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .hero-article h1{ margin:0 0 0.5rem 0; font-size:1.6rem; }
+        .hero-meta{ display:flex; gap:1rem; flex-wrap:wrap; align-items:center; color: rgba(255,255,255,0.95); font-size:0.95rem; }
+        .tag { background: rgba(255,255,255,0.07); padding:0.25rem 0.75rem; border-radius: 14px; }
+
+        /* Статья */
+        .article{ background:#fff; border:1px solid var(--border-color); padding:1.25rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); color:#222; }
+        .article h2{ color:var(--secondary-color); }
+        .article p{ color:#444; }
+        .article ul, .article ol{ margin-left:1.25rem; }
+
+        /* Таблицы */
+        .table{ width:100%; border-collapse: collapse; margin: 1rem 0; background: #fff; }
+        .table th, .table td{ padding:0.6rem 0.75rem; border:1px solid #f1f1f1; text-align:left; vertical-align:top; }
+        .table th{ background:var(--footer-bg); color:#fff; }
+
+        /* Вставки/выделенные блоки */
+        .callout{ background:#fffaf0; border-left:4px solid var(--primary-color); padding:1rem; border-radius:8px; margin:1.25rem 0; }
+        .callout-2{ background:#f8fafb; padding:1rem; border-radius:8px; margin:1.25rem 0; }
+
+        /* Кнопки */
+        .btn{ display:inline-block; padding:0.6rem 0.95rem; border-radius:8px; text-decoration:none; background:var(--primary-color); color:#fff; border:1px solid var(--primary-color); font-weight:700; }
+        .btn:hover{ background:var(--primary-color-dark); border-color:var(--primary-color-dark); }
+
+        /* Блок автора */
+        .author{ display:flex; gap:1rem; align-items:center; margin-top:1.5rem; padding-top:1rem; border-top:1px solid #eef0f1; }
+        .author .avatar{ width:80px; height:80px; border-radius:50%; background:var(--accent-color); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#1f1f1f; }
+
+        /* Навигация по статьям */
+        .article-nav{ display:flex; justify-content:space-between; gap:1rem; margin-top:2rem; }
+
+        /* Футер */
+        .footer{ background:var(--footer-bg); color:#fff; padding:1.5rem 0; margin-top:2rem; }
+        .footer .container{ display:flex; justify-content:center; }
+
+        @media (max-width:900px){
+            .nav-container{ padding:0.75rem; }
+            .container{ padding:1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер PROFстрой -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html" class="active">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Герой-блок -->
+            <article class="hero-article" aria-labelledby="title">
+                <h1 id="title">Тренды строительства в 2024 году: технологии, материалы и рынок</h1>
+                <div class="hero-meta" role="list">
+                    <div role="listitem">20 ноября 2024 • 9 мин чтения</div>
+                    <div role="listitem">Автор: Мария Воронова</div>
+                    <div role="listitem" class="tag">Строительство</div>
+                    <div role="listitem" class="tag">Технологии</div>
+                </div>
+            </article>
+
+            <!-- Тело статьи -->
+            <article class="article" aria-labelledby="intro">
+                <h2 id="intro">Введение — почему отрасли важны эти тренды</h2>
+                <p>Строительная отрасль переживает быстрые изменения: цифровизация процессов, экологический переход и модульные решения становятся ключевыми драйверами развития. В этой статье мы собрали самые заметные тренды 2024 года и объясним, как они повлияют на практику и рынок труда.</p>
+
+                <h2>1. Широкое внедрение BIM и цифровой координации</h2>
+                <p>BIM перестал быть экспериментом и стал базовым инструментом для проектирования и координации. В 2024 году наблюдается:</p>
+                <ul>
+                    <li>Повсеместное использование моделирования для clash-detection и коллаборации.</li>
+                    <li>Интеграция BIM с системами управления строительством (ERP, CMMS).</li>
+                    <li>Ставка на качество данных (LOD/LOI) в моделях для передач в эксплуатацию.</li>
+                </ul>
+
+                <h2>2. Модульное и заводское производство (prefab)</h2>
+                <p>Производство элементов на заводе сокращает сроки и снижает риски на площадке. Основные преимущества:</p>
+                <table class="table" aria-label="Преимущества модульного строительства">
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Преимущество</th>
+                            <th>Последствие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Скорость</td>
+                            <td>Сокращение сроков на 20–50%</td>
+                            <td>Быстрая окупаемость проектов</td>
+                        </tr>
+                        <tr>
+                            <td>Качество</td>
+                            <td>Контроль в заводских условиях</td>
+                            <td>Меньше доработок на объекте</td>
+                        </tr>
+                        <tr>
+                            <td>Экономика</td>
+                            <td>Снижение трудозатрат</td>
+                            <td>Оптимизация бюджета</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>3. Устойчивые материалы и "зелёное" строительство</h2>
+                <p>Рост требований к энергоэффективности и нормативам приводит к широкому применению: </p>
+                <ul>
+                    <li>Полезное применение сберегающих материалов (низкоуглеродный бетон, утеплители на базе переработанных материалов).</li>
+                    <li>Проектирование с учётом энергоэффективности — тепло/влаго режимы и пассивные методы.</li>
+                </ul>
+
+                <h2>4. Диджитализация процессов: датчики и цифровые двойники</h2>
+                <p>Интернет вещей, сенсоры и цифровые двойники помогают контролировать стройку и эксплуатировать объекты эффективнее:</p>
+                <ol>
+                    <li>Мониторинг состояния конструкций и материалов в реальном времени.</li>
+                    <li>Оптимизация логистики и расхода материалов.</li>
+                    <li>Поддержка принятия решений при возникновении отклонений.</li>
+                </ol>
+
+                <div class="callout">
+                    <strong>Практический совет:</strong> Научитесь работать с BIM и основными инструментами координации — это значимо повышает вашу ценность как специалиста на рынке.
+                </div>
+
+                <h2>5. Роботизация и автоматизация на площадке</h2>
+                <p>Роботы для кладки, 3D-печать и автоматизированные бетонные установки становятся более доступными — особенно в крупном строительстве и при массовом жилищном строительстве.</p>
+
+                <h2>6. Вопросы кадров и обучение</h2>
+                <p>Спрос на квалифицированные кадры растёт: нужны специалисты, которые понимают и цифровые инструменты, и классические строительные процессы. Поэтому обучающие программы с практикой на объекте и портфолио — лучший путь для быстрого трудоустройства.</p>
+
+                <div class="callout-2">
+                    <h3 style="margin-top:0; color:var(--secondary-color)">Как мы готовим специалистов</h3>
+                    <p>В PROFстрой мы комбинируем теорию, BIM-практику и реальные задачи на площадке — наши программы дают портфолио и навыки, необходимые работодателям.</p>
+                    <a href="courses.html" class="btn" style="margin-top:0.75rem; display:inline-block;">Посмотреть программы</a>
+                </div>
+
+                <h2>Заключение</h2>
+                <p>2024 год — это год устойчивой цифровизации строительства: BIM, модульное производство и "зеленые" решения становятся нормой. Специалисты, которые быстро осваивают эти технологии и получают опыт на реальных объектах — будут востребованы больше всех.</p>
+
+                <!-- Автор -->
+                <div class="author" role="contentinfo">
+                    <div class="avatar" aria-hidden="true"></div>
+                    <div>
+                        <strong>Мария Воронова</strong>
+                        <div style="color:var(--muted-color);">Эксперт по строительным технологиям и преподаватель PROFстрой</div>
+                    </div>
+                </div>
+
+                <!-- Навигация -->
+                <div class="article-nav">
+                    <a href="blog.html" class="btn">← Все статьи</a>
+                    <a href="#" class="btn">Следующая статья →</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin:0">&copy; 2024 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании - PROFстрой</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        .header { background: var(--secondary-color) !important; }
+        .logo { color: var(--accent-color) !important; }
+        .nav-menu a { color: #ffffff !important; }
+        .nav-menu a:hover { color: var(--accent-color) !important; }
+
+        .footer { background: var(--footer-bg) !important; color: #fff !important; }
+        .footer-section a { color: #dfe6e6 !important; }
+        .footer-section a:hover { color: var(--accent-color) !important; }
+
+        .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .btn:hover { background: var(--primary-color-dark); }
+
+        h1, h2, h3 { color: var(--secondary-color); }
+        .about-section { margin: 3rem 0; }
+        .about-section p { color: var(--text-color); line-height: 1.7; }
+
+        .table th { background: var(--footer-bg) !important; color: #fff !important; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">PROFстрой</div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="courses.html">Программы</a></li>
+                <li><a href="teachers.html">Инструкторы</a></li>
+                <li><a href="about.html" style="color: var(--accent-color);">О компании</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+    <div class="container">
+
+        <section class="about-section">
+            <h1>О компании PROFстрой</h1>
+            <p>
+                PROFстрой — это ведущая онлайн-школа строительных профессий, созданная для подготовки
+                специалистов, востребованных на стройплощадках по всей стране. Мы обучаем мастеров,
+                бригадиров, отделочников, бетонщиков, проектировщиков и других специалистов практическим
+                навыкам с реальной работой на объектах.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Наша миссия</h2>
+            <p>
+                Мы стремимся повысить качество строительных кадров в России, обучая людей современным технологиям,
+                безопасным методам работы и профессиональным стандартам. Наша задача — не просто передать знания,
+                а помочь студентам получить стабильную и высокооплачиваемую профессию.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Почему нам доверяют</h2>
+            <ul>
+                <li>🏗️ Практика 70–80% обучения — реальные объекты</li>
+                <li>👷‍♂️ Инструкторы — действующие мастера и бригадиры</li>
+                <li>🧰 Курсы разработаны под требования работодателей</li>
+                <li>📄 Помощь с резюме и подготовкой к трудоустройству</li>
+                <li>🏢 Партнёрства со строительными компаниями</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Наши достижения</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Результат</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Студентов</td>
+                        <td>5200+</td>
+                        <td>Обучены и прошли практику</td>
+                    </tr>
+                    <tr>
+                        <td>Трудоустройство</td>
+                        <td>82%</td>
+                        <td>В течение первых 3 месяцев</td>
+                    </tr>
+                    <tr>
+                        <td>Программ</td>
+                        <td>30+</td>
+                        <td>Строительство, отделка, проектирование</td>
+                    </tr>
+                    <tr>
+                        <td>Опыт преподавателей</td>
+                        <td>7–20 лет</td>
+                        <td>Настоящие мастера своего дела</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="about-section">
+            <h2>Наш путь развития</h2>
+            <p>
+                PROFстрой развивается каждый год: открываем новые направления, внедряем BIM,
+                расширяем практику на стройплощадках и добавляем корпоративные программы для компаний.
+                Наш план — создать крупнейшую строительную образовательную платформу страны.
+            </p>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>PROFстрой</h3>
+            <p>Онлайн-школа строительных профессий. Обучение с практикой на объектах и трудоустройством.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Программы</h3>
+            <a href="course-construction.html">Общестроительные работы</a>
+            <a href="course-finishing.html">Отделочные работы</a>
+            <a href="course-bim.html">Проектирование и BIM</a>
+        </div>
+        <div class="footer-section">
+            <h3>Информация</h3>
+            <a href="about.html">О компании</a>
+            <a href="teachers.html">Инструкторы</a>
+            <a href="reviews.html">Отзывы</a>
+            <a href="blog.html">Блог</a>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <a href="contacts.html">Написать нам</a>
+            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+            <a href="mailto:info@profobr.ru">info@profobr.ru</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 PROFстрой. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>

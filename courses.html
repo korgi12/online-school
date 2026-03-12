@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все программы PROFстрой</title>
+    <style>
+        /* Палитра и базовые стили (совместимы с главной страницей) */
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --muted-color: #757575;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        /* Общая разметка */
+        *{box-sizing: border-box}
+        body{font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--background-color); color:var(--text-color);}
+        .header{background:var(--secondary-color); color:#fff;}
+        .nav-container{max-width:1100px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between;}
+        .logo{font-weight:800; color:var(--accent-color);}
+        .nav-menu{list-style:none; margin:0; padding:0; display:flex; gap:1rem;}
+        .nav-menu a{color:#fff; text-decoration:none}
+        .nav-menu a.active{color:var(--accent-color)}
+
+        .container{max-width:1100px; margin:0 auto; padding:2rem;}
+
+        h1{color:var(--primary-color); text-align:center; border-bottom:3px solid rgba(0,0,0,0.06); padding-bottom:1rem;}
+
+        .two-column-layout{display:grid; grid-template-columns: 280px 1fr; gap:2rem; align-items:start;}
+
+        /* Сайдбар фильтров — в стилях PROFстрой: тёмный, аккуратно подсвечен акцентом */
+        .filters-sidebar{background:linear-gradient(180deg, #2f3333 0%, #232727 100%); color:#fff; padding:1.25rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow);}
+        .filters-sidebar .title{font-size:1.1rem; font-weight:700; color:var(--accent-color); margin-bottom:0.75rem}
+        .filter-group{margin-bottom:1rem}
+        .filter-group label{display:block; margin-bottom:0.5rem; font-weight:600; color:#e9e9e9}
+        .filter-group select{width:100%; padding:0.6rem; border-radius:8px; border:1px solid var(--border-color);}
+        .filters-sidebar .btn{width:100%}
+
+        /* Контент программ */
+        .courses-grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1.25rem;}
+        .course-card{background:#fff; border:2px solid var(--border-color); padding:1rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); display:flex; flex-direction:column; justify-content:space-between;}
+        .course-card .emoji{font-size:2.4rem; text-align:center; margin-bottom:0.5rem}
+        .course-card h3{margin:0 0 0.5rem 0; color:var(--secondary-color)}
+        .course-price{color:var(--primary-color); font-weight:700; margin-top:0.5rem}
+        .course-meta{color:var(--muted-color); font-size:0.95rem}
+        .course-card .btn{margin-top:1rem; align-self:flex-start}
+
+        /* Акцентные элементы (жилет) */
+        .feature-icon{position:absolute; top:-10px; right:-10px; background:var(--accent-color); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 8px var(--shadow); font-size:1.1rem}
+
+        /* Сообщение об отсутствии программ */
+        #noCoursesMessage{display:none}
+
+        /* Стили заголовка раздела и кнопок сортировки */
+        .top-row{display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem}
+        .sort-buttons{display:flex; gap:0.5rem; flex-wrap:wrap}
+        .sort-btn{padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border-color); background:#fff; cursor:pointer}
+        .sort-btn.active{background:var(--primary-color); color:#fff; border-color:var(--primary-color)}
+
+        /* Адаптив */
+        @media (max-width:900px){
+            .two-column-layout{grid-template-columns:1fr;}
+            .filters-sidebar{order:2}
+        }
+
+        /* Базовые кнопки из главной страницы */
+        .btn{background:var(--primary-color); color:#fff; border:1px solid var(--primary-color); padding:0.6rem 0.9rem; border-radius:8px; cursor:pointer; text-decoration:none; display:inline-block}
+        .btn:hover{background:var(--primary-color-dark); border-color:var(--primary-color-dark)}
+
+        .footer{background:var(--footer-bg); color:#fff; padding:1.5rem 0; margin-top:2rem}
+        .footer .container{display:flex; justify-content:center}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html" class="active">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="main-content">
+        <div class="container">
+            <h1>Все программы PROFстрой</h1>
+            <p style="text-align:center; margin-bottom:1.75rem">Практические программы для реальной работы на стройплощадке. Практика, инструкторы-практики и помощь с трудоустройством.</p>
+
+            <section aria-labelledby="catalogGuideTitle" style="background:#fff; border:1px solid var(--border-color); border-radius:12px; padding:1rem; box-shadow:0 6px 18px var(--shadow); margin-bottom:1.5rem;">
+                <h2 id="catalogGuideTitle" style="margin:0 0 0.5rem 0; color:var(--secondary-color);">Как пользоваться каталогом</h2>
+                <p style="margin:0; color:var(--muted-color);">Используйте фильтры слева и сортировку сверху (цена, длительность, рейтинг). Нажмите «Подробнее», чтобы открыть страницу программы и записаться.</p>
+            </section>
+
+            <div class="two-column-layout">
+                <!-- Фильтры -->
+                <aside class="filters-sidebar">
+                    <div class="title">Фильтры программ</div>
+
+                    <div class="filter-group">
+                        <label for="category">Категория</label>
+                        <select id="category">
+                            <option value="all">Все категории</option>
+                            <option value="construction">Общестроительные работы</option>
+                            <option value="finishing">Отделочные работы</option>
+                            <option value="bim">Проектирование / BIM</option>
+                            <option value="electric">Электротехнические работы</option>
+                            <option value="safety">Охрана труда и допуски</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="level">Уровень</label>
+                        <select id="level">
+                            <option value="all">Все уровни</option>
+                            <option value="beginner">Начальный</option>
+                            <option value="intermediate">Средний</option>
+                            <option value="advanced">Продвинутый</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="price">Цена</label>
+                        <select id="price">
+                            <option value="all">Любая цена</option>
+                            <option value="low">До 25 000 ₽</option>
+                            <option value="medium">25 000 - 40 000 ₽</option>
+                            <option value="high">От 40 000 ₽</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="duration">Длительность</label>
+                        <select id="duration">
+                            <option value="all">Любая длительность</option>
+                            <option value="short">До 12 недель</option>
+                            <option value="medium">13-24 недели</option>
+                            <option value="long">От 25 недель</option>
+                        </select>
+                    </div>
+
+                    <button id="applyFilters" class="btn">Применить фильтры</button>
+                    <button id="resetFilters" class="btn" style="background:#95a5a6; margin-top:0.5rem">Сбросить</button>
+                </aside>
+
+                <!-- Список программ -->
+                <section>
+                    <div class="top-row">
+                        <div>
+                            <h2 style="margin:0">Доступные программы</h2>
+                            <p style="margin:0; color:var(--muted-color)">Каталог практических программ</p>
+                        </div>
+
+                        <div style="text-align:right">
+                            <p style="margin:0 0 0.35rem 0">Найдено <strong id="coursesCount">0</strong> программ</p>
+                            <div class="sort-buttons">
+                                <button class="sort-btn active" data-sort="popular">По популярности</button>
+                                <button class="sort-btn" data-sort="price-asc">Цена ↑</button>
+                                <button class="sort-btn" data-sort="price-desc">Цена ↓</button>
+                                <button class="sort-btn" data-sort="duration">По длительности</button>
+                                <button class="sort-btn" data-sort="rating">По рейтингу</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="coursesContainer" class="courses-grid"></div>
+
+                    <div id="noCoursesMessage" style="display:none; text-align:center; padding:2rem; background:#fff; border-radius:10px; margin-top:1rem;">
+                        <p style="margin:0 0 0.5rem 0">Программы не найдены</p>
+                        <p style="margin:0 0 1rem 0; color:var(--muted-color)">Попробуйте изменить параметры фильтрации</p>
+                        <button id="resetFiltersMessage" class="btn">Сбросить фильтры</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin:0">&copy; 2024 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключаем внешний JS -->
+    <script src="js/courses.js"></script>
+</body>
+</html>

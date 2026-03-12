@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFстрой - Онлайн-школа строительных профессий</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- Цветовая схема: строительная / индустриальная --- */
+        :root{
+            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
+            --primary-color-dark: #d35400;   /* hover для акцента */
+            --secondary-color: #2b2b2b;      /* индустриальный тёмный (заголовки, хедер) */
+            --footer-bg: #1f2626;            /* подвал, чуть глубже */
+            --accent-color: #f1c40f;         /* строительный жёлтый (выделения/бейджи) */
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        /* Уникальные стили для главной страницы (оставлены как в твоём файле) */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.06"/></svg>');
+            background-size: 50px 50px;
+            mix-blend-mode: overlay;
+        }
+
+        .feature-card {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .feature-card::after {
+            content: "🦺";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-color);
+            color: #1f1f1f;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .btn-primary {
+            animation: pulse 2s infinite;
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color-dark);
+            border-color: var(--primary-color-dark);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .features-section h2 {
+            color: var(--primary-color);
+            text-decoration: underline;
+            text-underline-offset: 10px;
+        }
+
+        /* Оставляем хедер/логотип/меню как в исходнике (без принудительных переопределений) */
+        .header { background: var(--secondary-color); }
+        .logo { color: var(--accent-color); }
+        .nav-menu a { color: #ffffff; }
+        .nav-menu a:hover { color: var(--accent-color); }
+
+        .course-card { background: #ffffff; color: var(--text-color); }
+        .course-price { color: var(--primary-color); font-weight: 700; }
+        .table th { background: var(--footer-bg); color: #fff; }
+        .footer { background: var(--footer-bg); color: #fff; }
+        .footer-section a { color: #dfe6e6; }
+        .footer-section a:hover { color: var(--accent-color); }
+
+        .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .btn:hover { background: var(--primary-color-dark); }
+
+        .hint { color: var(--muted-color); }
+        .feature-icon { color: var(--secondary-color); }
+
+        /* -------- Стили кнопки "Наверх" (минимальные, не трогают палитру) -------- */
+        .scroll-top-btn {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+        }
+        .scroll-top-btn:hover {
+            transform: translateY(-50%) scale(1.06);
+            background: var(--primary-color-dark);
+        }
+        .scroll-top-btn:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+        @media (max-width: 700px) {
+            .scroll-top-btn {
+                top: auto;
+                bottom: 18px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" style="color: var(--accent-color);">Главная</a></li>
+                    <li><a href="courses.html">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+    <section class="hero">
+        <div class="container">
+            <h1>Станьте востребованным специалистом в строительстве</h1>
+            <p>Профессиональные курсы с практикой на стройплощадке и трудоустройством от опытных мастеров</p>
+            <a href="courses.html" class="btn btn-primary">Выбрать программу</a>
+        </div>
+    </section>
+
+        <div class="container">
+            <!-- Блок преимуществ -->
+            <section class="features-section">
+                <h2>Почему выбирают нашу строительную школу</h2>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏗️</div>
+                        <h3>Практика 80% на стройплощадке</h3>
+                        <p>Реальные рабочие процессы и проекты вместо сухой теории. С первого дня вы работаете с инструментом и материалами на площадке.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">👷‍♂️</div>
+                        <h3>Опытные бригадиры</h3>
+                        <p>Инструкторы-практики с многолетним стажем в строительстве. Личная поддержка и наставничество на объекте и в мастерской.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🧰</div>
+                        <h3>Трудоустройство на объектах</h3>
+                        <p>Помогаем с резюме, практическими тестовыми заданиями и доступом к вакансиям на объектах у наших партнёров.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Популярные курсы -->
+            <section id="popular-courses">
+                <h2 style="text-align: center; margin: 3rem 0 2rem 0;">Популярные программы</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <h3>Общестроительные работы</h3>
+                        <p><strong>Категория:</strong> Строительство</p>
+                        <p>Освойте фундаментальные навыки: подготовка площадки, земляные работы, армирование, бетонные работы и монтаж каркасов.</p>
+                        <div class="course-price">35 000 ₽</div>
+                        <div>📚 24 недели | ⭐ 4.8/5</div>
+                        <a href="course-construction.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Отделочные работы и ремонт</h3>
+                        <p><strong>Категория:</strong> Отделка</p>
+                        <p>Штукатурка, плиточные работы, декоративные покрытия, окраска и финишная отделка — от теории до практики на объектах.</p>
+                        <div class="course-price">28 000 ₽</div>
+                        <div>📚 16 недель | ⭐ 4.9/5</div>
+                        <a href="course-finishing.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Проектирование и BIM</h3>
+                        <p><strong>Категория:</strong> Проектирование</p>
+                        <p>Чертежи, расчёты и работа в AutoCAD и BIM-средах — подготовка проектов, смет и рабочих документаций.</p>
+                        <div class="course-price">22 000 ₽</div>
+                        <div>📚 12 недель | ⭐ 4.6/5</div>
+                        <a href="course-bim.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
+                    </div>
+                </div>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="courses.html" class="btn">Все программы</a>
+                </div>
+            </section>
+
+            <!-- Статистика в таблице -->
+            <section style="margin: 4rem 0;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Наши достижения в строительстве</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Показатель</th>
+                            <th>Результат</th>
+                            <th>Подробности</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Выпускников</td>
+                            <td>5,200+</td>
+                            <td>Прошли обучение и практику на объектах</td>
+                        </tr>
+                        <tr>
+                            <td>Трудоустроено</td>
+                            <td>82%</td>
+                            <td>Устроены на стройплощадки и в подрядные организации</td>
+                        </tr>
+                        <tr>
+                            <td>Средняя зарплата</td>
+                            <td>68,000 ₽</td>
+                            <td>После трудоустройства на профильных позициях</td>
+                        </tr>
+                        <tr>
+                            <td>Рейтинг школы</td>
+                            <td>4.9/5</td>
+                            <td>По отзывам выпускников и работодателей</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PROFстрой</h3>
+                <p>Онлайн-школа строительных профессий. Обучение с практикой на объектах и трудоустройством.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Программы</h3>
+                <a href="course-construction.html">Общестроительные работы</a>
+                <a href="course-finishing.html">Отделочные работы</a>
+                <a href="course-bim.html">Проектирование и BIM</a>
+            </div>
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <a href="about.html">О компании</a>
+                <a href="teachers.html">Инструкторы</a>
+                <a href="reviews.html">Отзывы</a>
+                <a href="blog.html">Блог</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <a href="contacts.html">Написать нам</a>
+                <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                <a href="mailto:info@profstroy.ru">info@profstroy.ru</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" — фиксированная сбоку -->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Наверх" title="Наверх">
+        ▲
+    </button>
+
+    <script>
+        (function() {
+            const btn = document.getElementById('scrollTopBtn');
+
+            function toggleBtn() {
+                if (window.scrollY > 200) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            }
+
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            window.addEventListener('scroll', toggleBtn, { passive: true });
+            btn.addEventListener('click', scrollToTop);
+
+            document.addEventListener('DOMContentLoaded', toggleBtn);
+        })();
+    </script>
+</body>
+</html>

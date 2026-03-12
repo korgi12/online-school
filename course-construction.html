@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Общестроительные работы - PROFстрой</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --muted-color: #757575;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        *{box-sizing:border-box}
+        body{
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin:0;
+            background:var(--background-color);
+            color:var(--text-color);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        .header{ background:var(--secondary-color); }
+        .nav-container{
+            max-width:1100px;
+            margin:0 auto;
+            padding:1rem;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .logo{ font-weight:800; color:var(--accent-color); font-size:1.15rem; }
+        .nav-menu{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:flex;
+            gap:1rem;
+            align-items:center;
+        }
+        .nav-menu a{
+            color:#fff;
+            text-decoration:none;
+            padding:0.45rem 0.6rem;
+            display:inline-block;
+        }
+        .nav-menu a.active{
+            color:var(--accent-color);
+            border-bottom:2px solid var(--primary-color);
+            padding-bottom:0.25rem;
+        }
+
+        .container{ max-width:1100px; margin:0 auto; padding:2rem; }
+
+        .course-header{
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: #fff;
+            padding: 1.75rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.75rem;
+        }
+        .course-header h1{ margin:0; font-size:1.6rem; }
+
+        .course-meta{
+            list-style:none;
+            display:flex;
+            gap:1rem;
+            flex-wrap:wrap;
+            margin:1rem 0 0;
+            padding:0;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .course-price-badge{
+            background: rgba(255,255,255,0.07);
+            padding:0.45rem 0.8rem;
+            border-radius:8px;
+            font-weight:700;
+        }
+
+        .two-column-layout{
+            display:grid;
+            grid-template-columns: 360px 1fr;
+            gap:1.5rem;
+            align-items:start;
+        }
+        @media (max-width:980px){
+            .two-column-layout{ grid-template-columns: 1fr; }
+        }
+
+        .course-aside{
+            background:#fff;
+            border:1px solid var(--border-color);
+            padding:1.2rem;
+            border-radius:12px;
+            box-shadow:0 6px 18px var(--shadow);
+        }
+
+        .gallery{
+            border-radius:8px;
+            overflow:hidden;
+            background:linear-gradient(135deg,#f6f0ea,#fff);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            height:220px;
+            font-size:3.2rem;
+            margin-bottom:1rem;
+        }
+
+        .aside-list{
+            list-style:none;
+            display:flex;
+            flex-direction:column;
+            gap:0.8rem;
+            margin:0.5rem 0 0;
+            padding:0;
+        }
+
+        .aside-item{ display:flex; gap:0.8rem; align-items:center; }
+
+        .aside-item .ico{
+            width:44px;
+            height:44px;
+            border-radius:8px;
+            background:var(--accent-color);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#1f1f1f;
+            font-weight:700;
+            box-shadow:0 6px 14px rgba(0,0,0,0.08);
+            flex-shrink:0;
+        }
+
+        .article{
+            background:#fff;
+            border:1px solid var(--border-color);
+            padding:1.25rem;
+            border-radius:12px;
+            box-shadow:0 6px 18px var(--shadow);
+        }
+
+        .article h2{ margin-top:0; color:var(--secondary-color); }
+        .article p{ color:#444; line-height:1.45; }
+
+        .outcomes{
+            list-style:none;
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:0.75rem;
+            margin:1rem 0 0;
+            padding:0;
+        }
+
+        .outcome{
+            background:#f9fafb;
+            border-radius:8px;
+            padding:0.9rem;
+            border:1px solid #eef2f4;
+        }
+
+        .price-box{
+            background:#fffaf0;
+            border-left:4px solid var(--primary-color);
+            padding:1rem;
+            border-radius:8px;
+            margin-top:1.25rem;
+        }
+
+        .price-box h2,
+        .price-box h3{
+            margin:0 0 0.5rem 0;
+            color:var(--secondary-color);
+        }
+
+        .price-big{
+            color:var(--primary-color);
+            font-size:1.4rem;
+            font-weight:800;
+            margin-bottom:0.5rem;
+        }
+
+        .btn{
+            background:var(--primary-color);
+            color:#fff;
+            border:1px solid var(--primary-color);
+            padding:0.6rem 0.95rem;
+            border-radius:8px;
+            text-decoration:none;
+            display:inline-block;
+            cursor:pointer;
+            font-weight:700;
+        }
+
+        .btn:hover{
+            background:var(--primary-color-dark);
+            border-color:var(--primary-color-dark);
+        }
+
+        .btn-primary{
+            animation:pulse 2s infinite;
+            background:var(--primary-color);
+            border-color:var(--primary-color);
+            color:#fff;
+        }
+
+        @keyframes pulse{
+            0%{ transform:scale(1);}
+            50%{ transform:scale(1.03);}
+            100%{ transform:scale(1);}
+        }
+
+        .faq { margin-top:1.5rem; }
+
+        details{
+            margin-bottom:0.85rem;
+            padding:0.85rem;
+            border-radius:8px;
+            border:1px solid var(--border-color);
+            background:#fff;
+        }
+
+        summary{
+            font-weight:700;
+            cursor:pointer;
+            color:var(--secondary-color);
+        }
+
+        .footer{
+            background:var(--footer-bg);
+            color:#fff;
+            padding:1.5rem 0;
+            margin-top:2rem;
+        }
+
+        .footer .container{
+            display:flex;
+            justify-content:center;
+        }
+
+        .visually-hidden{
+            position:absolute;
+            width:1px;
+            height:1px;
+            padding:0;
+            margin:-1px;
+            overflow:hidden;
+            clip:rect(0, 0, 0, 0);
+            white-space:nowrap;
+            border:0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav aria-label="Основная навигация">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html" class="active" aria-current="page">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article aria-labelledby="courseTitle">
+                <header class="course-header">
+                    <h1 id="courseTitle">Общестроительные работы</h1>
+
+                    <ul class="course-meta">
+                        <li class="course-price-badge">35 000 ₽</li>
+                        <li>📚 24 недели</li>
+                        <li>⭐ 4.8/5 (247 отзывов)</li>
+                        <li>🎯 Уровень: Начальный</li>
+                        <li>👥 Группы до 14 человек</li>
+                    </ul>
+                </header>
+
+                <div class="two-column-layout">
+                    <aside class="course-aside" aria-labelledby="courseFactsTitle">
+                        <h2 id="courseFactsTitle" class="visually-hidden">Краткая информация о курсе</h2>
+
+                        <div class="gallery" aria-hidden="true">🏗️</div>
+
+                        <ul class="aside-list">
+                            <li class="aside-item">
+                                <div class="ico" aria-hidden="true">⏱</div>
+                                <div>
+                                    <h3>Длительность</h3>
+                                    <p>24 недели — теория + практика на объекте</p>
+                                </div>
+                            </li>
+
+                            <li class="aside-item">
+                                <div class="ico" aria-hidden="true">🧰</div>
+                                <div>
+                                    <h3>Практика</h3>
+                                    <p>80% времени на реальных площадках и тренажёрах</p>
+                                </div>
+                            </li>
+
+                            <li class="aside-item">
+                                <div class="ico" aria-hidden="true">📜</div>
+                                <div>
+                                    <h3>Документы</h3>
+                                    <p>Сертификат по окончании + рекомендации</p>
+                                </div>
+                            </li>
+
+                            <li class="aside-item">
+                                <div class="ico" aria-hidden="true">💼</div>
+                                <div>
+                                    <h3>Трудоустройство</h3>
+                                    <p>Поддержка в трудоустройстве и база вакансий</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <p style="margin-top:1rem;">
+                            <a href="#enroll-section" class="btn" style="width:100%; display:block; text-align:center;">
+                                Записаться на курс
+                            </a>
+                        </p>
+                    </aside>
+
+                    <div class="article">
+                        <section aria-labelledby="aboutCourse">
+                            <h2 id="aboutCourse">Что вы изучите</h2>
+                            <p>
+                                Курс «Общестроительные работы» — практическая программа, которая даёт уверенные навыки
+                                для работы на объекте: подготовка площадки, земляные и фундаментные работы, армирование,
+                                бетонные работы и монтаж каркасов. Программа сочетает теорию с большим объёмом
+                                практики под руководством опытных бригадиров.
+                            </p>
+
+                            <ul class="outcomes" aria-label="Результаты обучения">
+                                <li class="outcome">
+                                    <h3>Подготовка площадки</h3>
+                                    <p>Разметка, выемка, подготовка основания.</p>
+                                </li>
+                                <li class="outcome">
+                                    <h3>Армирование и опалубка</h3>
+                                    <p>Правила вязки арматуры, установка опалубки.</p>
+                                </li>
+                                <li class="outcome">
+                                    <h3>Бетонные работы</h3>
+                                    <p>Приготовление смеси, заливка и уплотнение бетона.</p>
+                                </li>
+                                <li class="outcome">
+                                    <h3>Монтаж каркасов</h3>
+                                    <p>Монтаж металлических и деревянных конструкций.</p>
+                                </li>
+                                <li class="outcome">
+                                    <h3>Работа с инструментом</h3>
+                                    <p>Профессиональные станки и ручной инструмент.</p>
+                                </li>
+                                <li class="outcome">
+                                    <h3>Чтение чертежей</h3>
+                                    <p>Работа с рабочей документацией и сметами.</p>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section aria-labelledby="targetAudience" style="margin-top:1.25rem;">
+                            <h2 id="targetAudience">Кому подойдёт курс?</h2>
+                            <p>
+                                Программа подходит как для начинающих без опыта, так и для тех, кто хочет
+                                систематизировать навыки и получить рабочую специальность с последующим
+                                трудоустройством на объекте.
+                            </p>
+                        </section>
+
+                        <section id="enroll-section" class="price-box" aria-labelledby="priceTitle">
+                            <h2 id="priceTitle">Стоимость и рассрочка</h2>
+                            <p class="price-big">35 000 ₽</p>
+                            <p>или <strong>5 834 ₽/мес</strong> при рассрочке на 6 месяцев</p>
+                            <p style="margin-top:0.75rem;">
+                                <a href="#" class="btn btn-primary" style="width:100%; text-align:center;">
+                                    Записаться на курс
+                                </a>
+                            </p>
+                            <p style="font-size:0.9rem; color:var(--muted-color); margin-top:0.5rem;">
+                                Ближайший старт:
+                                <strong><time datetime="2026-02-10">10 февраля 2026</time></strong>
+                            </p>
+                        </section>
+
+                        <section class="faq" aria-labelledby="faqTitle">
+                            <h2 id="faqTitle">Часто спрашивают</h2>
+
+                            <details>
+                                <summary>Нужен ли опыт для поступления?</summary>
+                                <p style="margin-top:0.75rem;">
+                                    Опыт работы не обязателен — курс включает базовую подготовку и интенсивную практику.
+                                </p>
+                            </details>
+
+                            <details>
+                                <summary>Можно ли оплатить частями?</summary>
+                                <p style="margin-top:0.75rem;">
+                                    Да — доступна беспроцентная рассрочка и банковские схемы оплаты.
+                                </p>
+                            </details>
+
+                            <details>
+                                <summary>Где проходит практика?</summary>
+                                <p style="margin-top:0.75rem;">
+                                    Практика проходит на учебных полигонах и реальных объектах под контролем инструкторов.
+                                </p>
+                            </details>
+                        </section>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin:0">&copy; 2025 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

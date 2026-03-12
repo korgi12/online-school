@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - PROFстрой</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Внутренние стили (только цвета и связанные акценты) -->
+    <style>
+        /* Палитра — совпадает с главной страницей PROFстрой */
+        :root{
+            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
+            --primary-color-dark: #d35400;   /* hover / темнее */
+            --secondary-color: #2b2b2b;      /* тёмный / индустриальный */
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;         /* жёлтый акцент */
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        /* Стили специфичные для этой страницы — только цвета изменены */
+        .page-header {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        /* Псевдоклассы (без изменения логики) */
+        .course-card:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Стили для уникальных элементов страницы — только цветовая схема */
+        .limited-offer {
+            background: #fff3cd;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+        }
+
+        /* Перекрытия для inline-блоков и общих элементов, чтобы страница полностью соответствовала палитре */
+        .btn {
+            background: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--primary-color);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: var(--primary-color-dark);
+            border-color: var(--primary-color-dark);
+        }
+
+        /* Блок статистики — фон/тень/цвета */
+        .stats-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        /* Цвета для чисел в статистике — соответствие новой палитре */
+        .stats-card .stat-primary { color: var(--accent-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-accent { color: var(--primary-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-success { color: var(--success-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-dark { color: var(--secondary-color); font-size: 2rem; font-weight: bold; }
+
+        /* Аватары в отзывах — заменил цвета фонов на палитру */
+        .avatar-primary { background: var(--primary-color); color: white; }
+        .avatar-primary-dark { background: var(--primary-color-dark); color: white; }
+        .avatar-success { background: var(--success-color); color: white; }
+        .avatar-accent { background: var(--accent-color); color: #1f1f1f; }
+
+        /* Звёзды рейтинга — жёлтый акцент */
+        .stars { color: var(--accent-color); margin-bottom: 1rem; }
+
+        /* Разделы видео — фон и бордюр */
+        .video-block { background: var(--background-color); padding: 2rem; border-radius: 10px; text-align: center; }
+
+        /* Секции, разделяющие контент */
+        .content-separator { border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem; color: var(--muted-color); }
+
+        /* Перекрытие для тонких линий */
+        .thin-line { border-top: 1px solid var(--border-color); }
+
+        /* Обновление футера, если нужно (цвета соответствуют главной) */
+        .footer { background: var(--footer-bg); color: #fff; padding: 1.5rem 0; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PROFстрой</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html">Программы</a></li>
+                    <li><a href="teachers.html">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html" style="color: var(--accent-color);">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>Отзывы наших выпускников</h1>
+            <p style="margin-bottom: 3rem; font-size: 1.1rem;">Реальные истории успеха от тех, кто уже сменил профессию</p>
+
+            <!-- Статистика -->
+            <h2 id="stats-title" style="margin: 0 0 1rem 0; color: var(--secondary-color);">Результаты выпускников</h2>
+            <div class="stats-card">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center;">
+                    <div>
+                        <div class="stat-primary">4.9/5</div>
+                        <p>Средний рейтинг</p>
+                    </div>
+                    <div>
+                        <div class="stat-accent">1,240+</div>
+                        <p>Отзывов</p>
+                    </div>
+                    <div>
+                        <div class="stat-success">78%</div>
+                        <p>Трудоустроились</p>
+                    </div>
+                    <div>
+                        <div class="stat-dark">94%</div>
+                        <p>Рекомендуют школу</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзывы -->
+            <h2 id="reviews-title" style="margin: 2.5rem 0 1rem 0; color: var(--secondary-color);">Отзывы выпускников</h2>
+            <div class="courses-grid">
+                <!-- Отзыв 1 -->
+                <div class="course-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin-right: 1rem;" class="avatar-primary">
+                            👨
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">Иван Сидоров</h4>
+                            <p style="margin: 0; color: var(--muted-color);">Веб-разработчик в Яндекс</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Пришел на курс без каких-либо знаний в программировании. Через 6 месяцев уже получил оффер от Яндекса! Отдельное спасибо Алексею Петрову - лучший преподаватель!"</p>
+                    <div class="content-separator">
+                        <strong>Курс:</strong> Веб-разработка с нуля<br>
+                        <strong>Результат:</strong> +120% к зарплате
+                    </div>
+                </div>
+
+                <!-- Отзыв 2 -->
+                <div class="course-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin-right: 1rem;" class="avatar-primary-dark">
+                            👩
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">Елена Ковалева</h4>
+                            <p style="margin: 0; color: var(--muted-color);">Дизайнер в Avito</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"После курса графического дизайна полностью сменила профессию с менеджера на дизайнера. Мария - потрясающий преподаватель, всегда помогала и поддерживала. Портфолио, собранное во время обучения, помогло найти работу мечты!"</p>
+                    <div class="content-separator">
+                        <strong>Курс:</strong> Графический дизайн<br>
+                        <strong>Результат:</strong> Смена профессии
+                    </div>
+                </div>
+
+                <!-- Отзыв 3 -->
+                <div class="course-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin-right: 1rem;" class="avatar-success">
+                            👨
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">Артем Волков</h4>
+                            <p style="margin: 0; color: var(--muted-color);">SMM-специалист</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Курс по маркетингу превзошел все ожидания! Практические кейсы, актуальная информация и поддержка куратора 24/7. Уже на 3 месяце обучения начал брать первых клиентов на фрилансе."</p>
+                    <div class="content-separator">
+                        <strong>Курс:</strong> Маркетинг в соцсетях<br>
+                        <strong>Результат:</strong> Собственный бизнес
+                    </div>
+                </div>
+
+                <!-- Отзыв 4 -->
+                <div class="course-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1f1f1f; font-size: 1.5rem; margin-right: 1rem;" class="avatar-accent">
+                            👩
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">Ольга Новикова</h4>
+                            <p style="margin: 0; color: var(--muted-color);">Data Analyst в Сбере</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Python для анализа данных - это именно то, что нужно для старта в Data Science. Анна прекрасно объясняет сложные темы, проекты максимально приближены к реальным задачам. После курса получила 3 оффера!"</p>
+                    <div class="content-separator">
+                        <strong>Курс:</strong> Python для анализа данных<br>
+                        <strong>Результат:</strong> Карьерный рост
+                    </div>
+                </div>
+            </div>
+
+            <!-- Видео-отзывы -->
+            <section class="article" style="margin: 4rem 0;">
+                <h2>Видео-отзывы выпускников</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="video-block">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                        <h3>История успеха: от официанта до разработчика</h3>
+                        <p>Иван рассказывает о своем пути в IT</p>
+                        <div class="btn">Смотреть видео</div>
+                    </div>
+                    <div class="video-block">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                        <h3>Как я стала дизайнером в 35 лет</h3м>
+                        <p>Елена делится опытом смены профессии</p>
+                        <div class="btn">Смотреть видео</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="margin:0;">&copy; 2024 PROFстрой. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
