@@ -1,4 +1,4 @@
-﻿/* === Кастомные свойства (CSS variables) - вынесены наверх === */
+/* === Кастомные свойства (CSS variables) - вынесены наверх === */
 :root {
     --primary-color: #3498db;        /* основной акцент (синий) */
     --primary-color-dark: #2980b9;   /* hover для primary */
@@ -731,3 +731,22 @@ select[multiple] {
         background: #bdc3c7 !important;
         transform: none !important;
     }
+
+
+.logo {
+    text-decoration: none;
+}
+
+.nav-menu a.active {
+    color: var(--accent-color);
+}
+
+.footer-section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.footer-section address {
+    font-style: normal;
+}

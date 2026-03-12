@@ -1,0 +1,85 @@
+/* Палитра и базовые стили (совместимы с главной страницей PROFстрой) */
+        :root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --muted-color: #757575;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        *{box-sizing:border-box}
+        body{
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin:0;
+            background:var(--background-color);
+            color:var(--text-color);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        /* Хедер — как на сайте PROFстрой */
+        .header{ background:var(--secondary-color); }
+        .nav-container{ max-width:1100px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between; }
+        .logo{ font-weight:800; color:var(--accent-color); font-size:1.15rem; }
+        .nav-menu{ list-style:none; margin:0; padding:0; display:flex; gap:1rem; align-items:center; }
+        .nav-menu a{ color:#fff; text-decoration:none; padding:0.45rem 0.6rem; display:inline-block; }
+        .nav-menu a.active{ color:var(--accent-color); border-bottom:2px solid var(--primary-color); padding-bottom:0.25rem; }
+
+        .container{ max-width:1100px; margin:0 auto; padding:2rem; }
+
+        /* Заголовок курса */
+        .course-header{
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: #fff;
+            padding: 1.75rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.75rem;
+        }
+        .course-header h1{ margin:0; font-size:1.6rem; }
+        .course-meta{ display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; align-items:center; color: rgba(255,255,255,0.95); }
+        .course-price-badge{ background: rgba(255,255,255,0.07); padding:0.45rem 0.8rem; border-radius:8px; font-weight:700; }
+
+        /* Сетка содержимого */
+        .two-column-layout{ display:grid; grid-template-columns: 360px 1fr; gap:1.5rem; align-items:start; }
+        @media (max-width:980px){ .two-column-layout{ grid-template-columns: 1fr; } }
+
+        /* Сайдбар (галерея и ключевые факты) */
+        .course-aside{ background:#fff; border:1px solid var(--border-color); padding:1.2rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); }
+        .gallery { border-radius:8px; overflow:hidden; background:linear-gradient(135deg,#f6f0ea,#fff); display:flex; align-items:center; justify-content:center; height:220px; font-size:3.2rem; margin-bottom:1rem; }
+        .aside-list{ display:flex; flex-direction:column; gap:0.8rem; margin-top:0.5rem; }
+        .aside-item{ display:flex; gap:0.8rem; align-items:center; }
+        .aside-item .ico{ width:44px; height:44px; border-radius:8px; background:var(--accent-color); display:flex; align-items:center; justify-content:center; color:#1f1f1f; font-weight:700; box-shadow:0 6px 14px rgba(0,0,0,0.08); }
+
+        /* Основной контент курса */
+        .article{ background:#fff; border:1px solid var(--border-color); padding:1.25rem; border-radius:12px; box-shadow:0 6px 18px var(--shadow); }
+        .article h2{ margin-top:0; color:var(--secondary-color); }
+        .article p{ color:#444; line-height:1.45; }
+
+        .outcomes{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:0.75rem; margin-top:1rem; }
+        .outcome{ background:#f9fafb; border-radius:8px; padding:0.9rem; border:1px solid #eef2f4; }
+
+        /* Блок цены и запись */
+        .price-box{ background:#fffaf0; border-left:4px solid var(--primary-color); padding:1rem; border-radius:8px; margin-top:1.25rem; }
+        .price-box h3{ margin:0 0 0.5rem 0; color:var(--secondary-color); }
+        .price-big{ color:var(--primary-color); font-size:1.4rem; font-weight:800; margin-bottom:0.5rem; }
+
+        /* Кнопки */
+        .btn{ background:var(--primary-color); color:#fff; border:1px solid var(--primary-color); padding:0.6rem 0.95rem; border-radius:8px; text-decoration:none; display:inline-block; cursor:pointer; font-weight:700; }
+        .btn:hover{ background:var(--primary-color-dark); border-color:var(--primary-color-dark); }
+
+        .btn-primary{ animation:pulse 2s infinite; background:var(--primary-color); border-color:var(--primary-color); color:#fff; }
+        @keyframes pulse{ 0%{ transform:scale(1);} 50%{ transform:scale(1.03);} 100%{ transform:scale(1);} }
+
+        /* Доп. блоки */
+        .faq { margin-top:1.5rem; }
+        details{ margin-bottom:0.85rem; padding:0.85rem; border-radius:8px; border:1px solid var(--border-color); background:#fff; }
+        summary{ font-weight:700; cursor:pointer; color:var(--secondary-color); }
+
+        .footer{ background:var(--footer-bg); color:#fff; padding:1.5rem 0; margin-top:2rem; }
+        .footer .container{ display:flex; justify-content:center; }

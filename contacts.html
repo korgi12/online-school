@@ -5,163 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PROFстрой — Контакты</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* --- Цветовая схема: строительная / индустриальная --- */
-        :root{
-            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
-            --primary-color-dark: #d35400;   /* hover для акцента */
-            --secondary-color: #2b2b2b;      /* индустриальный тёмный (заголовки, хедер) */
-            --footer-bg: #1f2626;            /* подвал, чуть глубже */
-            --accent-color: #f1c40f;         /* строительный жёлтый (бейджи/логотип) */
-            --accent-color-dark: #d4ac0d;
-            --text-color: #2d2d2d;
-            --background-color: #f4f5f6;
-            --muted-color: #757575;
-            --border-color: #e0e0e0;
-            --shadow: rgba(0,0,0,0.12);
-            --success-color: #27ae60;
-        }
-
-        /* Базовые сбросы и контейнеры */
-        * { box-sizing: border-box; }
-        body {
-            font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.45;
-        }
-        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
-
-        /* Хедер — точь-в-точь как на главной */
-        .header { 
-            background: var(--secondary-color) !important; 
-            padding: 0.75rem 0; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            position: sticky; top: 0; z-index: 10; 
-        }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
-        .logo { color: var(--accent-color) !important; font-weight: 800; font-size: 1.25rem; }
-        nav ul { display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0; align-items: center; }
-        .nav-menu a { color: #ffffff !important; text-decoration: none; padding: 0.5rem 0.6rem; display: inline-block; }
-        .nav-menu a:hover { color: var(--accent-color) !important; }
-
-        /* Страница хедер / вводный блок */
-        .page-header {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 1.25rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        .page-header h1 { margin: 0 0 0.5rem 0; font-size: 1.6rem; }
-        .page-header p { margin: 0; color: rgba(255,255,255,0.9); }
-
-        /* Двухколоночная верстка */
-        .two-column-layout { display: grid; grid-template-columns: 1fr 420px; gap: 1.5rem; align-items: start; margin-top: 1.5rem; }
-        @media (max-width: 880px) {
-            .two-column-layout { grid-template-columns: 1fr; }
-        }
-
-        /* Карточки / article */
-        .article { background: #fff; border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px; box-shadow: 0 6px 18px var(--shadow); }
-
-        .contact-row { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem; }
-        .contact-row .icon { font-size: 1.8rem; width: 44px; text-align:center; }
-        .contact-row h3 { margin: 0 0 0.25rem 0; font-size: 1.05rem; color: var(--secondary-color); }
-        .contact-row p { margin:0; color: #555; }
-
-        /* Таблица с временем работы */
-        .table { width:100%; border-collapse: collapse; margin-top: 0.75rem; }
-        .table td { padding: 0.6rem 0.5rem; border-bottom: 1px solid #f1f1f1; color: #444; }
-
-        /* Форма */
-        form .form-group { margin-bottom: 1rem; display:flex; flex-direction:column; gap:0.4rem; position:relative; align-items:flex-start; }
-        label { font-weight: 600; color: var(--secondary-color); }
-        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-            padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; width:100%;
-        }
-        textarea { resize: vertical; min-height: 120px; }
-        /* Подсказки теперь имеют фиксированную высоту, чтобы при появлении ошибки не происходил сдвиг верстки */
-        :root { --hint-height: 2.2em; }
-        .hint { color: var(--muted-color); font-size: 0.9rem; min-height: var(--hint-height); line-height: 1.1; display:block; }
-        /* Когда hint используется для сообщения об ошибке */
-        .hint.error { color: #c0392b; font-weight: 700; }
-        /* Если вы используете отдельный блок для ошибок — он позиционируется абсолютно внутри .form-group,
-           чтобы не менять высоту потока документа (и не сдвигать соседние элементы). */
-        .error-message { position:absolute; left:0; bottom:0; font-size:0.85rem; color: #c0392b; min-height: 1.1em; display:none; }
-
-        /* Кнопки */
-        .btn { display: inline-block; padding: 0.6rem 1rem; border-radius: 8px; text-decoration: none; text-align: center; border: 1px solid var(--primary-color); background: var(--primary-color); color: #fff; font-weight: 600; cursor: pointer; }
-        .btn:hover { background: var(--primary-color-dark); border-color: var(--primary-color-dark); }
-
-        .btn-primary {
-            animation: pulse 2s infinite;
-            background: var(--primary-color);
-            color: #fff;
-            border-color: var(--primary-color);
-        }
-        @keyframes pulse { 0%{ transform: scale(1); } 50%{ transform: scale(1.03); } 100%{ transform: scale(1); } }
-
-        /* Служебные блоки */
-        .limited-offer { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; }
-        .footer { background: var(--footer-bg); color: #fff; padding: 2rem 0; margin-top: 2rem; }
-        .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 1rem; text-align: center; }
-        .footer a { color: #dfe6e6; }
-
-
-        /* ========== Стили кастомного модального окна (для замены alert) ========== */
-        .cs-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.36);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-        }
-        .cs-modal {
-            background: white;
-            border-radius: 12px;
-            width: 420px;
-            max-width: 100%;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.28);
-            padding: 18px;
-            font-family: Inter, system-ui, sans-serif;
-        }
-        .cs-title { font-weight: 800; color: #222; margin: 0 0 6px 0; font-size: 1.05rem; }
-        .cs-text { color: #444; margin: 0 0 16px 0; line-height: 1.35; font-size: 0.95rem; white-space: pre-wrap; }
-        .cs-actions { display:flex; gap:10px; justify-content:flex-end; }
-        .cs-btn {
-            padding: 8px 14px; border-radius: 10px; border: none; cursor: pointer;
-            font-weight: 700; font-size: 0.95rem;
-        }
-        .cs-btn.primary { background: var(--primary-color); color: #fff; }
-        .cs-btn.ghost { background: transparent; color:#555; }
-    </style>
+    <link rel="stylesheet" href="css/contacts.css">
 </head>
 <body>
     <!-- Одинаковый хедер (как на сайте PROFстрой) -->
     <header class="header">
-        <div class="nav-container">
-            <div class="logo">PROFстрой</div>
-            <nav>
-                <ul class="nav-menu">
+    <div class="nav-container">
+        <a class="logo" href="index.html" aria-label="PROFстрой — на главную">PROFстрой</a>
+        <nav aria-label="Основная навигация">
+            <ul class="nav-menu">
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="courses.html">Программы</a></li>
                     <li><a href="teachers.html">Инструкторы</a></li>
                     <li><a href="about.html">О компании</a></li>
                     <li><a href="reviews.html">Отзывы</a></li>
                     <li><a href="blog.html">Блог</a></li>
-                    <li><a href="contacts.html" style="color: var(--accent-color);">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                    <li><a href="contacts.html" class="active" aria-current="page">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <main class="main-content">
         <div class="container">
@@ -311,18 +174,37 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div style="max-width:1100px; margin:0 auto; padding:0 1rem; display:flex; justify-content:space-between; gap:1rem; align-items:center; flex-wrap:wrap;">
-                <div>
-                    <h3 style="color:var(--accent-color); margin:0 0 0.35rem 0;">PROFстрой</h3>
-                    <div style="color:#dfe6e6;">Онлайн-школа строительных профессий. Обучение с практикой на объектах и трудоустройством.</div>
-                </div>
-                <div style="text-align:right;">
-                    <div style="color:#bfc9c9;">&copy; 2025 PROFстрой. Все права защищены.</div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div class="footer-content">
+        <section class="footer-section" aria-labelledby="footer-brand-title">
+            <h2 id="footer-brand-title">PROFстрой</h2>
+            <p>Онлайн-школа строительных профессий. Обучение с практикой на объектах и трудоустройством.</p>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-courses-title">
+            <h2 id="footer-courses-title">Программы</h2>
+            <a href="course-construction.html">Общестроительные работы</a>
+            <a href="course-finishing.html">Отделочные работы</a>
+            <a href="course-bim.html">Проектирование и BIM</a>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-info-title">
+            <h2 id="footer-info-title">Информация</h2>
+            <a href="about.html">О компании</a>
+            <a href="teachers.html">Инструкторы</a>
+            <a href="reviews.html">Отзывы</a>
+            <a href="blog.html">Блог</a>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-contacts-title">
+            <h2 id="footer-contacts-title">Контакты</h2>
+            <address>
+                <a href="contacts.html">Написать нам</a>
+                <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                <a href="mailto:info@profstroy.ru">info@profstroy.ru</a>
+            </address>
+        </section>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 PROFстрой. Все права защищены.</p>
+    </div>
+</footer>
 
     <!-- ========= МАРКАП И СКРИПТ КАСТОМНОГО МОДАЛА (заменяет alert) ========= -->
     <div id="csOverlay" class="cs-overlay" role="dialog" aria-modal="true" aria-hidden="true">

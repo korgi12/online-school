@@ -1,0 +1,86 @@
+/* Палитра — совпадает с главной страницей PROFстрой */
+        :root{
+            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
+            --primary-color-dark: #d35400;   /* hover / темнее */
+            --secondary-color: #2b2b2b;      /* тёмный / индустриальный */
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;         /* жёлтый акцент */
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        /* Стили специфичные для этой страницы — только цвета изменены */
+        .page-header {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        /* Псевдоклассы (без изменения логики) */
+        .course-card:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Стили для уникальных элементов страницы — только цветовая схема */
+        .limited-offer {
+            background: #fff3cd;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+        }
+
+        /* Перекрытия для inline-блоков и общих элементов, чтобы страница полностью соответствовала палитре */
+        .btn {
+            background: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--primary-color);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: var(--primary-color-dark);
+            border-color: var(--primary-color-dark);
+        }
+
+        /* Блок статистики — фон/тень/цвета */
+        .stats-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        /* Цвета для чисел в статистике — соответствие новой палитре */
+        .stats-card .stat-primary { color: var(--accent-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-accent { color: var(--primary-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-success { color: var(--success-color); font-size: 2rem; font-weight: bold; }
+        .stats-card .stat-dark { color: var(--secondary-color); font-size: 2rem; font-weight: bold; }
+
+        /* Аватары в отзывах — заменил цвета фонов на палитру */
+        .avatar-primary { background: var(--primary-color); color: white; }
+        .avatar-primary-dark { background: var(--primary-color-dark); color: white; }
+        .avatar-success { background: var(--success-color); color: white; }
+        .avatar-accent { background: var(--accent-color); color: #1f1f1f; }
+
+        /* Звёзды рейтинга — жёлтый акцент */
+        .stars { color: var(--accent-color); margin-bottom: 1rem; }
+
+        /* Разделы видео — фон и бордюр */
+        .video-block { background: var(--background-color); padding: 2rem; border-radius: 10px; text-align: center; }
+
+        /* Секции, разделяющие контент */
+        .content-separator { border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem; color: var(--muted-color); }
+
+        /* Перекрытие для тонких линий */
+        .thin-line { border-top: 1px solid var(--border-color); }
+
+        /* Обновление футера, если нужно (цвета соответствуют главной) */
+        .footer { background: var(--footer-bg); color: #fff; padding: 1.5rem 0; }

@@ -1,0 +1,141 @@
+/* --- Цветовая схема: строительная / индустриальная --- */
+        :root{
+            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
+            --primary-color-dark: #d35400;   /* hover для акцента */
+            --secondary-color: #2b2b2b;      /* индустриальный тёмный (заголовки, хедер) */
+            --footer-bg: #1f2626;            /* подвал, чуть глубже */
+            --accent-color: #f1c40f;         /* строительный жёлтый (выделения/бейджи) */
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        /* Уникальные стили для главной страницы (оставлены как в твоём файле) */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.06"/></svg>');
+            background-size: 50px 50px;
+            mix-blend-mode: overlay;
+        }
+
+        .feature-card {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .feature-card::after {
+            content: "🦺";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-color);
+            color: #1f1f1f;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .btn-primary {
+            animation: pulse 2s infinite;
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color-dark);
+            border-color: var(--primary-color-dark);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .features-section h2 {
+            color: var(--primary-color);
+            text-decoration: underline;
+            text-underline-offset: 10px;
+        }
+
+        /* Оставляем хедер/логотип/меню как в исходнике (без принудительных переопределений) */
+        .header { background: var(--secondary-color); }
+        .logo { color: var(--accent-color); }
+        .nav-menu a { color: #ffffff; }
+        .nav-menu a:hover { color: var(--accent-color); }
+
+        .course-card { background: #ffffff; color: var(--text-color); }
+        .course-price { color: var(--primary-color); font-weight: 700; }
+        .table th { background: var(--footer-bg); color: #fff; }
+        .footer { background: var(--footer-bg); color: #fff; }
+        .footer-section a { color: #dfe6e6; }
+        .footer-section a:hover { color: var(--accent-color); }
+
+        .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .btn:hover { background: var(--primary-color-dark); }
+
+        .hint { color: var(--muted-color); }
+        .feature-icon { color: var(--secondary-color); }
+
+        /* -------- Стили кнопки "Наверх" (минимальные, не трогают палитру) -------- */
+        .scroll-top-btn {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+        }
+        .scroll-top-btn:hover {
+            transform: translateY(-50%) scale(1.06);
+            background: var(--primary-color-dark);
+        }
+        .scroll-top-btn:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+        @media (max-width: 700px) {
+            .scroll-top-btn {
+                top: auto;
+                bottom: 18px;
+                transform: none;
+            }
+        }

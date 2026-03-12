@@ -1,0 +1,32 @@
+:root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        .header { background: var(--secondary-color) !important; }
+        .logo { color: var(--accent-color) !important; }
+        .nav-menu a { color: #ffffff !important; }
+        .nav-menu a:hover { color: var(--accent-color) !important; }
+
+        .footer { background: var(--footer-bg) !important; color: #fff !important; }
+        .footer-section a { color: #dfe6e6 !important; }
+        .footer-section a:hover { color: var(--accent-color) !important; }
+
+        .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .btn:hover { background: var(--primary-color-dark); }
+
+        h1, h2, h3 { color: var(--secondary-color); }
+        .about-section { margin: 3rem 0; }
+        .about-section p { color: var(--text-color); line-height: 1.7; }
+
+        .table th { background: var(--footer-bg) !important; color: #fff !important; }
