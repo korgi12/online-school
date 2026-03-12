@@ -1,0 +1,73 @@
+:root{
+            --primary-color: #e67e22;
+            --primary-color-dark: #d35400;
+            --secondary-color: #2b2b2b;
+            --footer-bg: #1f2626;
+            --accent-color: #f1c40f;
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+        }
+
+        body { background: var(--background-color); color: var(--text-color); font-family: Inter, Roboto, Arial, sans-serif; margin:0; }
+        .container { max-width:1100px; margin:0 auto; padding:2rem; }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* Сетка карточек: каждая строка растягивается по высоте (grid-auto-rows: 1fr)
+           и карточки занимают всю высоту ячейки (height:100%) — это выравнивает кнопки по нижнему краю */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            grid-auto-rows: 1fr;
+            align-items: stretch;
+        }
+
+        /* Карточка становится колонкой, занимает всю высоту ячейки и распределяет контент
+           так, чтобы кнопка всегда оставалась внизу карточки. */
+        .course-card {
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px var(--shadow);
+            border: 1px solid var(--border-color);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* важно, чтобы занять строку grid */
+            transition: transform .25s ease;
+        }
+
+        .course-card:hover { transform: translateY(-6px); }
+
+        .instructor-top { text-align: center; }
+        .instructor-avatar { width: 120px; height: 120px; border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; font-size:2.5rem; color:#fff; margin-bottom:1rem; }
+        .course-card h3 { margin: 0 0 6px 0; }
+        .course-card p.lead { margin:0 0 1rem 0; color:#666; }
+
+        /* Блок с основными данными — позволяет гибко расти, не влияя на позицию кнопки */
+        .course-details { margin: 1rem 0; flex: 1 1 auto; }
+
+        .course-card p.quote { font-style: italic; margin: 0 0 1rem 0; }
+
+        /* Кнопка всегда прижата к низу карточки */
+        .course-card .btn { width: 100%; text-align: center; margin-top: 0.5rem; align-self: stretch; }
+
+        .btn { background: var(--primary-color); border-color: var(--primary-color); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; text-decoration:none; display:inline-block; }
+        .btn:hover { background: var(--primary-color-dark); border-color: var(--primary-color-dark); }
+
+        /* Дополнительная адаптивность */
+        @media (max-width: 720px) {
+            .instructor-avatar { width: 96px; height: 96px; font-size: 2rem; }
+        }

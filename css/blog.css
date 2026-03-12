@@ -1,0 +1,154 @@
+/* --- Цветовая схема: строительная / индустриальная --- */
+        :root{
+            --primary-color: #e67e22;        /* строительный оранжевый (акцент) */
+            --primary-color-dark: #d35400;   /* hover для акцента */
+            --secondary-color: #2b2b2b;      /* индустриальный тёмный (заголовки, хедер) */
+            --footer-bg: #1f2626;            /* подвал, чуть глубже */
+            --accent-color: #f1c40f;         /* строительный жёлтый (выделения/бейджи) */
+            --accent-color-dark: #d4ac0d;
+            --text-color: #2d2d2d;
+            --background-color: #f4f5f6;
+            --muted-color: #757575;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.12);
+            --success-color: #27ae60;
+        }
+
+        /* Базовые сбросы и контейнеры */
+        * { box-sizing: border-box; }
+        body {
+            font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+        /* Хедер — как в оригинале */
+        .header { 
+            background: var(--secondary-color) !important; 
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+            position: sticky; 
+            top: 0; 
+            z-index: 10; 
+        }
+        .nav-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 1rem; 
+        }
+        .logo { 
+            color: var(--accent-color) !important;
+            font-weight: 800; 
+            font-size: 1.25rem; 
+        }
+        nav ul { 
+            display: flex; 
+            gap: 1rem; 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            align-items: center; 
+        }
+        .nav-menu a { 
+            color: #ffffff !important; 
+            text-decoration: none; 
+            padding: 0.5rem 0.6rem; 
+            display: inline-block; 
+        }
+        .nav-menu a:hover { 
+            color: var(--accent-color) !important; 
+        }
+
+        /* Заголовок страницы */
+        h1 { margin: 1.25rem 0 0.5rem 0; color: var(--secondary-color); font-size: 2rem; }
+        .intro { color: var(--muted-color); margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* Карточки статей / сетка */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .course-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 4px 14px var(--shadow);
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+        }
+
+        .card-hero {
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+        .card-hero.icon-1 { background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); }
+        .card-hero.icon-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .card-hero.icon-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+
+        .course-card h3 { margin: 0 0 0.5rem 0; color: var(--secondary-color); font-size: 1.15rem; }
+        .course-card p.meta { color: var(--muted-color); margin: 0 0 0.75rem 0; font-size: 0.95rem; }
+        .course-card p.lead-text { color: #555; flex-grow: 1; }
+
+        .badge {
+            display: inline-block;
+            background: #ecf0f1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid var(--primary-color);
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+        }
+        .btn:hover { background: var(--primary-color-dark); border-color: var(--primary-color-dark); }
+
+        /* Популярные темы */
+        .topics { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+        .topic-pill { padding: 0.45rem 0.9rem; border-radius: 20px; text-decoration: none; color: #fff; font-weight: 600; }
+        .pill-1 { background: var(--primary-color); }
+        .pill-2 { background: #e74c3c; }
+        .pill-3 { background: #2ecc71; }
+        .pill-4 { background: #9b59b6; }
+        .pill-5 { background: #34495e; }
+
+        /* Таблицы / футер */
+        .footer { background: var(--footer-bg); color: #fff; padding: 2rem 0; margin-top: 2rem; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; padding: 0 1rem; }
+        .footer-section h3 { margin-top: 0; color: var(--accent-color); }
+        .footer-section a { color: #dfe6e6; text-decoration: none; display: block; margin: 0.35rem 0; }
+        .footer-section a:hover { color: var(--accent-color); }
+        .footer-bottom { text-align: center; padding-top: 1rem; color: #bfc9c9; }
+
+        /* Небольшая адаптивность */
+        @media (max-width: 700px) {
+            .nav-container { padding: 0 0.75rem; }
+            .container { padding: 1rem; }
+            .card-hero { height: 160px; font-size: 2.5rem; }
+        }

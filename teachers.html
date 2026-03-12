@@ -5,97 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Инструкторы - PROFстрой</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        :root{
-            --primary-color: #e67e22;
-            --primary-color-dark: #d35400;
-            --secondary-color: #2b2b2b;
-            --footer-bg: #1f2626;
-            --accent-color: #f1c40f;
-            --accent-color-dark: #d4ac0d;
-            --text-color: #2d2d2d;
-            --background-color: #f4f5f6;
-            --muted-color: #757575;
-            --border-color: #e0e0e0;
-            --shadow: rgba(0,0,0,0.12);
-        }
-
-        body { background: var(--background-color); color: var(--text-color); font-family: Inter, Roboto, Arial, sans-serif; margin:0; }
-        .container { max-width:1100px; margin:0 auto; padding:2rem; }
-
-        .page-header {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        /* Сетка карточек: каждая строка растягивается по высоте (grid-auto-rows: 1fr)
-           и карточки занимают всю высоту ячейки (height:100%) — это выравнивает кнопки по нижнему краю */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            grid-auto-rows: 1fr;
-            align-items: stretch;
-        }
-
-        /* Карточка становится колонкой, занимает всю высоту ячейки и распределяет контент
-           так, чтобы кнопка всегда оставалась внизу карточки. */
-        .course-card {
-            background: #fff;
-            padding: 1.25rem;
-            border-radius: 10px;
-            box-shadow: 0 6px 18px var(--shadow);
-            border: 1px solid var(--border-color);
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%; /* важно, чтобы занять строку grid */
-            transition: transform .25s ease;
-        }
-
-        .course-card:hover { transform: translateY(-6px); }
-
-        .instructor-top { text-align: center; }
-        .instructor-avatar { width: 120px; height: 120px; border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; font-size:2.5rem; color:#fff; margin-bottom:1rem; }
-        .course-card h3 { margin: 0 0 6px 0; }
-        .course-card p.lead { margin:0 0 1rem 0; color:#666; }
-
-        /* Блок с основными данными — позволяет гибко расти, не влияя на позицию кнопки */
-        .course-details { margin: 1rem 0; flex: 1 1 auto; }
-
-        .course-card p.quote { font-style: italic; margin: 0 0 1rem 0; }
-
-        /* Кнопка всегда прижата к низу карточки */
-        .course-card .btn { width: 100%; text-align: center; margin-top: 0.5rem; align-self: stretch; }
-
-        .btn { background: var(--primary-color); border-color: var(--primary-color); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; text-decoration:none; display:inline-block; }
-        .btn:hover { background: var(--primary-color-dark); border-color: var(--primary-color-dark); }
-
-        /* Дополнительная адаптивность */
-        @media (max-width: 720px) {
-            .instructor-avatar { width: 96px; height: 96px; font-size: 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/teachers.css">
 </head>
 <body>
 
 <header class="header">
     <div class="nav-container">
-        <div class="logo">PROFстрой</div>
-        <nav>
+        <a class="logo" href="index.html" aria-label="PROFстрой — на главную">PROFстрой</a>
+        <nav aria-label="Основная навигация">
             <ul class="nav-menu">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="courses.html">Программы</a></li>
-                <li><a href="teachers.html" style="color: var(--accent-color);">Инструкторы</a></li>
-                <li><a href="about.html">О компании</a></li>
-                <li><a href="reviews.html">Отзывы</a></li>
-                <li><a href="blog.html">Блог</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="courses.html">Программы</a></li>
+                    <li><a href="teachers.html" class="active" aria-current="page">Инструкторы</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
     </div>
@@ -190,29 +115,31 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <div class="footer-section">
-            <h3>PROFстрой</h3>
-            <p>Онлайн-школа строительных профессий с практикой на объектах.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Программы</h3>
+        <section class="footer-section" aria-labelledby="footer-brand-title">
+            <h2 id="footer-brand-title">PROFстрой</h2>
+            <p>Онлайн-школа строительных профессий. Обучение с практикой на объектах и трудоустройством.</p>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-courses-title">
+            <h2 id="footer-courses-title">Программы</h2>
             <a href="course-construction.html">Общестроительные работы</a>
             <a href="course-finishing.html">Отделочные работы</a>
             <a href="course-bim.html">Проектирование и BIM</a>
-        </div>
-        <div class="footer-section">
-            <h3>Информация</h3>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-info-title">
+            <h2 id="footer-info-title">Информация</h2>
             <a href="about.html">О компании</a>
             <a href="teachers.html">Инструкторы</a>
             <a href="reviews.html">Отзывы</a>
             <a href="blog.html">Блог</a>
-        </div>
-        <div class="footer-section">
-            <h3>Контакты</h3>
-            <a href="contacts.html">Написать нам</a>
-            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
-            <a href="mailto:info@profobr.ru">info@profobr.ru</a>
-        </div>
+        </section>
+        <section class="footer-section" aria-labelledby="footer-contacts-title">
+            <h2 id="footer-contacts-title">Контакты</h2>
+            <address>
+                <a href="contacts.html">Написать нам</a>
+                <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                <a href="mailto:info@profstroy.ru">info@profstroy.ru</a>
+            </address>
+        </section>
     </div>
     <div class="footer-bottom">
         <p>&copy; 2024 PROFстрой. Все права защищены.</p>
