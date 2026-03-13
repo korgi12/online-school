@@ -13,14 +13,7 @@
             --success-color: #27ae60;
         }
 
-        .header { background: var(--secondary-color) !important; }
-        .logo { color: var(--accent-color) !important; }
-        .nav-menu a { color: #ffffff !important; }
-        .nav-menu a:hover { color: var(--accent-color) !important; }
 
-        .footer { background: var(--footer-bg) !important; color: #fff !important; }
-        .footer-section a { color: #dfe6e6 !important; }
-        .footer-section a:hover { color: var(--accent-color) !important; }
 
         .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
         .btn:hover { background: var(--primary-color-dark); }

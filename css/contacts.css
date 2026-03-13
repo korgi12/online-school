@@ -28,17 +28,7 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
         /* Хедер — точь-в-точь как на главной */
-        .header { 
-            background: var(--secondary-color) !important; 
-            padding: 0.75rem 0; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            position: sticky; top: 0; z-index: 10; 
-        }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
-        .logo { color: var(--accent-color) !important; font-weight: 800; font-size: 1.25rem; }
         nav ul { display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0; align-items: center; }
-        .nav-menu a { color: #ffffff !important; text-decoration: none; padding: 0.5rem 0.6rem; display: inline-block; }
-        .nav-menu a:hover { color: var(--accent-color) !important; }
 
         /* Страница хедер / вводный блок */
         .page-header {
@@ -100,9 +90,6 @@
 
         /* Служебные блоки */
         .limited-offer { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; }
-        .footer { background: var(--footer-bg); color: #fff; padding: 2rem 0; margin-top: 2rem; }
-        .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 1rem; text-align: center; }
-        .footer a { color: #dfe6e6; }
 
 
         /* ========== Стили кастомного модального окна (для замены alert) ========== */

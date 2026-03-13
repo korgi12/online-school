@@ -27,27 +27,6 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
         /* Хедер — как в оригинале */
-        .header { 
-            background: var(--secondary-color) !important; 
-            padding: 0.75rem 0; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            position: sticky; 
-            top: 0; 
-            z-index: 10; 
-        }
-        .nav-container { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 1rem; 
-        }
-        .logo { 
-            color: var(--accent-color) !important;
-            font-weight: 800; 
-            font-size: 1.25rem; 
-        }
         nav ul { 
             display: flex; 
             gap: 1rem; 
@@ -55,15 +34,6 @@
             padding: 0; 
             margin: 0; 
             align-items: center; 
-        }
-        .nav-menu a { 
-            color: #ffffff !important; 
-            text-decoration: none; 
-            padding: 0.5rem 0.6rem; 
-            display: inline-block; 
-        }
-        .nav-menu a:hover { 
-            color: var(--accent-color) !important; 
         }
 
         /* Заголовок страницы */
@@ -139,16 +109,9 @@
         .pill-5 { background: #34495e; }
 
         /* Таблицы / футер */
-        .footer { background: var(--footer-bg); color: #fff; padding: 2rem 0; margin-top: 2rem; }
-        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; padding: 0 1rem; }
-        .footer-section h3 { margin-top: 0; color: var(--accent-color); }
-        .footer-section a { color: #dfe6e6; text-decoration: none; display: block; margin: 0.35rem 0; }
-        .footer-section a:hover { color: var(--accent-color); }
-        .footer-bottom { text-align: center; padding-top: 1rem; color: #bfc9c9; }
 
         /* Небольшая адаптивность */
         @media (max-width: 700px) {
-            .nav-container { padding: 0 0.75rem; }
             .container { padding: 1rem; }
             .card-hero { height: 160px; font-size: 2.5rem; }
         }

@@ -83,4 +83,3 @@
         .thin-line { border-top: 1px solid var(--border-color); }
 
         /* Обновление футера, если нужно (цвета соответствуют главной) */
-        .footer { background: var(--footer-bg); color: #fff; padding: 1.5rem 0; }
