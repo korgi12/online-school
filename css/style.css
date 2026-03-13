@@ -4,6 +4,12 @@
     --primary-color-dark: #2980b9;   /* hover для primary */
     --secondary-color: #2c3e50;      /* фон шапки (тёмно-синий/серый) */
     --footer-bg: #34495e;            /* фон подвала (немного другая тональность) */
+    --nav-bg: #2c3e50;               /* единый фон навигации */
+    --nav-link-color: #ffffff;       /* единый цвет ссылок навигации */
+    --nav-link-hover: #3498db;       /* единый цвет hover/active в навигации */
+    --footer-bg-unified: #34495e;    /* единый фон подвала */
+    --footer-link-color: #bdc3c7;    /* единый цвет ссылок подвала */
+    --footer-link-hover: #3498db;    /* единый hover ссылок подвала */
     --accent-color: #e74c3c;         /* акцент (красный) */
     --accent-color-dark: #c0392b;    /* hover для accent */
     --text-color: #333333;           /* основной текст */
@@ -36,8 +42,8 @@ body {
 
 /* Шапка */
 .header {
-    background: var(--secondary-color);
-    color: white;
+    background: var(--nav-bg);
+    color: var(--nav-link-color);
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -58,7 +64,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--nav-link-hover);
 }
 
 .nav-menu {
@@ -68,14 +74,14 @@ body {
 }
 
     .nav-menu a {
-        color: white;
+        color: var(--nav-link-color);
         text-decoration: none;
         transition: color 0.3s;
         font-weight: 500;
     }
 
         .nav-menu a:hover {
-            color: var(--primary-color);
+            color: var(--nav-link-hover);
         }
 
 /* Основной контент */
@@ -92,7 +98,7 @@ body {
 
 /* Подвал */
 .footer {
-    background: var(--footer-bg);
+    background: var(--footer-bg-unified);
     color: white;
     padding: 3rem 0 2rem;
     margin-top: 4rem;
@@ -109,18 +115,18 @@ body {
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--footer-link-hover);
 }
 
 .footer-section a {
-    color: var(--muted-light);
+    color: var(--footer-link-color);
     text-decoration: none;
     display: block;
     margin-bottom: 0.5rem;
 }
 
     .footer-section a:hover {
-        color: var(--primary-color);
+        color: var(--footer-link-hover);
     }
 
 .footer-bottom {
@@ -738,12 +744,12 @@ select[multiple] {
 }
 
 .nav-menu a.active {
-    color: var(--accent-color);
+    color: var(--nav-link-hover);
 }
 
 .footer-section h2 {
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--footer-link-hover);
     font-size: 1.1rem;
 }
 
