@@ -81,17 +81,10 @@
         }
 
         /* Оставляем хедер/логотип/меню как в исходнике (без принудительных переопределений) */
-        .header { background: var(--secondary-color); }
-        .logo { color: var(--accent-color); }
-        .nav-menu a { color: #ffffff; }
-        .nav-menu a:hover { color: var(--accent-color); }
 
         .course-card { background: #ffffff; color: var(--text-color); }
         .course-price { color: var(--primary-color); font-weight: 700; }
         .table th { background: var(--footer-bg); color: #fff; }
-        .footer { background: var(--footer-bg); color: #fff; }
-        .footer-section a { color: #dfe6e6; }
-        .footer-section a:hover { color: var(--accent-color); }
 
         .btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
         .btn:hover { background: var(--primary-color-dark); }
